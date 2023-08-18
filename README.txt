@@ -10,7 +10,7 @@ create table chat_db.usuario(
 );
 create table chat_db.conversacion(
   id int not null auto_increment,
-  fecha_ini timestamp
+  fecha timestamp
 );
 create table chat_db.mensaje(
   id int not null auto_increment,
@@ -19,15 +19,15 @@ create table chat_db.mensaje(
   texto varchar(255),
   fecha timestamp,
   primary key(id),
-  foreign key(id_usuario) references usuario(id),
-  foreign key(id_conversacion) references conversacion(id)
+  foreign key(idusuario) references usuario(id),
+  foreign key(idconversacion) references conversacion(id)
 );
 
 INSERT INTO `chat_db`.`usuario` (`nombres`, `apellidos`, `email`, `password`) VALUES ('Carlos', 'Perez', 'carlos@gmail.com', '1234');
 INSERT INTO `chat_db`.`usuario` (`nombres`, `apellidos`, `email`, `password`) VALUES ('Paul', 'Smith', 'paul@gmail.com', '1234');
 INSERT INTO `chat_db`.`usuario` (`nombres`, `apellidos`, `email`, `password`) VALUES ('Katty', 'McCain', 'katty@gmail.com', '1234');
-insert into conversacion(fecha_ini) values(sysdate());
-insert into mensaje(id_usuario,id_conversacion,texto,fecha) values(2,2,'hola carlos',sysdate());
-insert into mensaje(id_usuario,id_conversacion,texto,fecha) values(3,2,'hola katty',sysdate());
+insert into conversacion(fecha) values(sysdate());
+insert into mensaje(idusuario,idconversacion,texto,fecha) values(2,2,'hola carlos',sysdate());
+insert into mensaje(idusuario,idconversacion,texto,fecha) values(3,2,'hola katty',sysdate());
 
 --usuario: root - password: root
